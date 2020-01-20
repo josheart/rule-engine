@@ -1,4 +1,4 @@
-package com.visio.ruleengine.engine;
+package com.visio.ruleengine.rules;
 
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;

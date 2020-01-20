@@ -1,8 +1,8 @@
 package com.visio.ruleengine;
 
 import com.google.gson.Gson;
-import com.visio.ruleengine.engine.ProductRule;
-import com.visio.ruleengine.engine.Rule;
+import com.visio.ruleengine.rules.ProductRule;
+import com.visio.ruleengine.rules.Rule;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

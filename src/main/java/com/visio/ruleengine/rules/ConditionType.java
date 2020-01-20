@@ -1,4 +1,4 @@
-package com.visio.ruleengine.engine;
+package com.visio.ruleengine.rules;
 
 public enum ConditionType {
     EQUALS,

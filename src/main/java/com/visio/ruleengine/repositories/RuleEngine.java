@@ -1,6 +1,6 @@
 package com.visio.ruleengine.repositories;
 
-import com.visio.ruleengine.engine.Rule;
+import com.visio.ruleengine.rules.Rule;
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 

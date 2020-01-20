@@ -1,6 +1,6 @@
 package com.visio.ruleengine.models;
 
-import com.visio.ruleengine.engine.State;
+import com.visio.ruleengine.rules.State;
 import lombok.*;
 
 @Getter
