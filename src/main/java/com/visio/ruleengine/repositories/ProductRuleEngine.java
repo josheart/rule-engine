@@ -11,8 +11,8 @@ import java.util.List;
 
 @Getter
 @Repository
-public class ProductRuleRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(ProductRuleRepository.class);
+public class ProductRuleEngine {
+    private static final Logger LOG = LoggerFactory.getLogger(ProductRuleEngine.class);
 
     public Product applyRules(Person person, Product product, List<Rule> rules){
         Product result = product;

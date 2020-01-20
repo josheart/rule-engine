@@ -36,6 +36,7 @@ public class RuleInit {
             LOG.info(content);
             ProductRule[] rules = new Gson().fromJson(content, ProductRule[].class);
             this.rules = Arrays.asList(rules);
+            LOG.info("Product pricing rules are loaded");
         } catch (IOException e) {
             e.printStackTrace();
         }

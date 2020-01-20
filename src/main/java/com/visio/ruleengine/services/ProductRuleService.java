@@ -1,7 +1,7 @@
 package com.visio.ruleengine.services;
 
 import com.visio.ruleengine.RuleInit;
-import com.visio.ruleengine.repositories.ProductRuleRepository;
+import com.visio.ruleengine.repositories.ProductRuleEngine;
 import com.visio.ruleengine.models.PersonProductPair;
 import com.visio.ruleengine.models.Product;
 import lombok.AllArgsConstructor;
@@ -16,10 +16,10 @@ public class ProductRuleService {
 
     private final RuleInit ruleInit;
 
-    private final ProductRuleRepository productRuleRepository;
+    private final ProductRuleEngine productRuleEngine;
 
     public Product getProductPricing(PersonProductPair personProductPair){
-        return productRuleRepository.applyRules(personProductPair.getPerson(), personProductPair.getProduct(), ruleInit.getRules());
+        return productRuleEngine.applyRules(personProductPair.getPerson(), personProductPair.getProduct(), ruleInit.getRules());
     }
 
 }
