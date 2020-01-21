@@ -4,7 +4,6 @@ import com.visio.ruleengine.models.Data;
 import lombok.AllArgsConstructor;
 import org.kie.api.runtime.KieSession;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 @Component
 @AllArgsConstructor

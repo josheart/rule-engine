@@ -3,8 +3,6 @@ package com.visio.ruleengine.services;
 import com.visio.ruleengine.engine.Engine;
 import com.visio.ruleengine.models.Data;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 @Service

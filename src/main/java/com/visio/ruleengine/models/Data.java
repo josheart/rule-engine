@@ -2,8 +2,6 @@ package com.visio.ruleengine.models;
 
 import com.visio.ruleengine.views.CreditScore;
 import lombok.*;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
