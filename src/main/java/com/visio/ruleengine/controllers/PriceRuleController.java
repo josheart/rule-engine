@@ -1,5 +1,6 @@
 package com.visio.ruleengine.controllers;
 import com.visio.ruleengine.models.Data;
+import com.visio.ruleengine.services.RuleService;
 import lombok.AllArgsConstructor;
 import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
@@ -14,10 +15,10 @@ import javax.validation.Valid;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/productPrice")
-public class ProductRuleController {
-    private static final Logger LOG = LoggerFactory.getLogger(ProductRuleController.class);
+public class PriceRuleController {
+    private static final Logger LOG = LoggerFactory.getLogger(PriceRuleController.class);
 
-    private final KieSession session;
+    private final RuleService service;
 
     @PostMapping
     public ResponseEntity<Data> submit(@Valid @RequestBody final Data data, BindingResult bindingResult){
@@ -25,8 +26,7 @@ public class ProductRuleController {
             LOG.warn("Validation failed: {}", bindingResult);
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
-        session.insert(data);
-        session.fireAllRules();
-        return new ResponseEntity<>(data, HttpStatus.OK);
+
+        return new ResponseEntity<>(service.getProductPricing(data), HttpStatus.OK);
     }
 }
