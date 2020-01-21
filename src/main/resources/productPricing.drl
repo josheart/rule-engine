@@ -1,4 +1,3 @@
-package KieRule;
 import com.visio.ruleengine.models.Data;
 
 rule "RESIDENCY"
