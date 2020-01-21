@@ -23,7 +23,7 @@ public class Data {
 
     @Size(min = 4, max = 25)
     @NotNull(message = "Please provide a valid product name")
-    private String name;
+    private String productName;
 
     @NotNull
     private double interest_rate;

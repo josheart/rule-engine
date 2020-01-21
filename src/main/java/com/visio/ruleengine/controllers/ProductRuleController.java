@@ -22,12 +22,13 @@ public class ProductRuleController {
     private KieSession session;
 
     @PostMapping
-    public Data submit(@Valid @RequestBody Data data, BindingResult bindingResult){
+    public ResponseEntity<Data> submit(@Valid @RequestBody Data data, BindingResult bindingResult){
         if(bindingResult.hasErrors()) {
             LOG.warn("Validation failed: {}", bindingResult);
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
         session.insert(data);
         session.fireAllRules();
-        return data;
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }

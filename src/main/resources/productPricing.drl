@@ -1,0 +1,26 @@
+package KieRule;
+import com.visio.ruleengine.models.Data;
+
+rule "RESIDENCY"
+
+when
+dataObject : Data(state=="FL")
+then
+dataObject.setDisqualified(true);
+end;
+
+rule "CREDIT SCORE UNDER 720"
+
+when
+dataObject : Data(credit_score < 720)
+then
+dataObject.setInterest_rate(dataObject.getInterest_rate() + 0.5);
+end;
+
+rule "PRODUCT NAME"
+
+when
+dataObject : Data(productName == "7-1 ARM")
+then
+dataObject.setInterest_rate(dataObject.getInterest_rate() + 0.5);
+end;
