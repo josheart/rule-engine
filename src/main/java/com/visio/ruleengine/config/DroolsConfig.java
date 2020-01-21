@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 @Configuration
-public class DroolConfig {
+public class DroolsConfig {
 
     private KieServices kieServices = KieServices.Factory.get();
 
