@@ -1,4 +1,4 @@
-package com.visio.ruleengine.repositories;
+package com.visio.ruleengine.engines;
 
 import com.visio.ruleengine.rules.Rule;
 import com.visio.ruleengine.models.Person;

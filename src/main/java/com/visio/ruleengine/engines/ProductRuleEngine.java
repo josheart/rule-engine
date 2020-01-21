@@ -1,4 +1,4 @@
-package com.visio.ruleengine.repositories;
+package com.visio.ruleengine.engines;
 
 import org.springframework.stereotype.Repository;
 
