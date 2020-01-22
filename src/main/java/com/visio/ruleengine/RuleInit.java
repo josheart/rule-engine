@@ -28,6 +28,9 @@ public class RuleInit {
     @Value("${rule.path}")
     private String rulePath;
 
+    /**
+     * 
+     */
     @PostConstruct
     private void loadRules() {
         try {

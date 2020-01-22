@@ -15,14 +15,13 @@ public class Condition {
     private ConditionType type;
 
     /**
-     *
      * @param person
      * @param product
      * @return
      */
-    public boolean getResult(Person person, Product product){
+    public boolean getResult(Person person, Product product) {
         Object actualValue = getActual(key, person, product);
-        switch (type){
+        switch (type) {
             case EQUALS:
                 return actualValue.toString().equals(value);
             case LESS_THAN:
@@ -38,7 +37,6 @@ public class Condition {
     }
 
     /**
-     *
      * @param key
      * @param person
      * @param product
@@ -49,14 +47,14 @@ public class Condition {
             Field[] fields = person.getClass().getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
-                if (field.getName().equals(key)){
+                if (field.getName().equals(key)) {
                     return field.get(person);
                 }
             }
             fields = product.getClass().getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
-                if (field.getName().equals(key)){
+                if (field.getName().equals(key)) {
                     return field.get(product);
                 }
             }
@@ -67,7 +65,6 @@ public class Condition {
     }
 
     /**
-     *
      * @param actualValue
      * @param value
      * @return
@@ -77,7 +74,6 @@ public class Condition {
     }
 
     /**
-     *
      * @param actualValue
      * @param value
      * @return
@@ -87,7 +83,6 @@ public class Condition {
     }
 
     /**
-     *
      * @param actualValue
      * @param value
      * @return

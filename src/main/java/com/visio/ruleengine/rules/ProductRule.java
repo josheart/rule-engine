@@ -13,14 +13,13 @@ public class ProductRule implements Rule {
     private Condition condition;
 
     /**
-     *
      * @param person
      * @param product
      * @return
      */
     @Override
     public Product applyTo(Person person, Product product) {
-        if (condition.getResult(person, product)){
+        if (condition.getResult(person, product)) {
             return action.execute(product);
         }
         return product;

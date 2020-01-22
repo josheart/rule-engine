@@ -15,7 +15,7 @@ public class Action {
     private ActionType type;
 
     public Product execute(Product product) {
-        switch (type){
+        switch (type) {
             case LOWER:
                 return math(product, "-", value);
             case GRANT:
@@ -34,7 +34,7 @@ public class Action {
     }
 
     private Product math(Product product, String operand, String value) {
-        switch (operand){
+        switch (operand) {
             case "+":
                 product.setInterest_rate(product.getInterest_rate() + Double.parseDouble(value));
                 return product;

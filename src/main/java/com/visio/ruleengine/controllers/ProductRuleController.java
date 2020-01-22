@@ -1,4 +1,5 @@
 package com.visio.ruleengine.controllers;
+
 import com.visio.ruleengine.RuleInit;
 import com.visio.ruleengine.models.PersonProductPair;
 import com.visio.ruleengine.models.Product;
@@ -24,22 +25,22 @@ public class ProductRuleController {
     private final RuleService ruleService;
 
 
-
     /**
      * Returns the productPrice and eligibility
+     *
      * @param personProductPair The demographic data of the person, initial interest rate and requested product
-     * @param bindingResult catches any error happens during binding
+     * @param bindingResult     catches any error happens during binding
      * @return the productPrice and eligibility
      */
     @PostMapping("/productPrice")
-    ResponseEntity<Product> submit(@Valid @RequestBody final PersonProductPair personProductPair, BindingResult bindingResult){
-        if(bindingResult.hasErrors()) {
+    ResponseEntity<Product> submit(@Valid @RequestBody final PersonProductPair personProductPair, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             LOG.warn("Validation failed: {}", bindingResult);
-            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Product newProduct = ruleService.applyRules(personProductPair, ruleInit.getRules());
         return ResponseEntity
-                    .ok()
-                    .body(newProduct);
+                .ok()
+                .body(newProduct);
     }
 }

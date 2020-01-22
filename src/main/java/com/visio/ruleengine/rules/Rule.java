@@ -6,7 +6,6 @@ import com.visio.ruleengine.models.Product;
 @FunctionalInterface
 public interface Rule {
     /**
-     *
      * @param person
      * @param product
      * @return

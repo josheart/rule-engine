@@ -1,6 +1,6 @@
 package com.visio.ruleengine.rules;
 
-public enum  ActionType {
+public enum ActionType {
     LOWER,
     RAISE,
     MULTIPLY_BY,

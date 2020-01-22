@@ -19,6 +19,12 @@ public class ProductRuleService implements RuleService {
 
     private final RuleEngine ruleEngine;
 
+    /**
+     *
+     * @param personProductPair
+     * @param rules
+     * @return
+     */
     @Override
     public Product applyRules(PersonProductPair personProductPair, List<Rule> rules){
         Person person = personProductPair.getPerson();
