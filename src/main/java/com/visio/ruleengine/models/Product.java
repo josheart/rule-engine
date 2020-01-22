@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 public class Product {
 
     @NotNull(message = "Please provide a valid product name")
-    @Size(min = 4, max = 25)
+    @Size(min = 4, max = 20)
     private String name;
     @NotNull
     private double interest_rate;

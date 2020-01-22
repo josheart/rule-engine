@@ -1,10 +1,14 @@
 package com.visio.ruleengine.rules;
 
 import com.visio.ruleengine.models.Product;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  */
+@Getter
+@Setter
 public class Action {
     private String key;
     private String value;

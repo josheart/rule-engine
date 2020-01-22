@@ -2,14 +2,24 @@ package com.visio.ruleengine.rules;
 
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.lang.reflect.Field;
 
+@Getter
+@Setter
 public class Condition {
     private String key;
     private String value;
     private ConditionType type;
 
+    /**
+     *
+     * @param person
+     * @param product
+     * @return
+     */
     public boolean getResult(Person person, Product product){
         Object actualValue = getActual(key, person, product);
         switch (type){
@@ -27,6 +37,13 @@ public class Condition {
         return false;
     }
 
+    /**
+     *
+     * @param key
+     * @param person
+     * @param product
+     * @return
+     */
     private Object getActual(String key, Person person, Product product) {
         try {
             Field[] fields = person.getClass().getDeclaredFields();
@@ -49,14 +66,32 @@ public class Condition {
         return null;
     }
 
+    /**
+     *
+     * @param actualValue
+     * @param value
+     * @return
+     */
     private boolean equals(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) == Double.parseDouble(value);
     }
 
+    /**
+     *
+     * @param actualValue
+     * @param value
+     * @return
+     */
     private boolean greaterThan(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) > Double.parseDouble(value);
     }
 
+    /**
+     *
+     * @param actualValue
+     * @param value
+     * @return
+     */
     private boolean lessThan(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) < Double.parseDouble(value);
     }

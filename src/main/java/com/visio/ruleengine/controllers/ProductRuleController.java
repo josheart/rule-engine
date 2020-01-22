@@ -1,4 +1,5 @@
 package com.visio.ruleengine.controllers;
+import com.visio.ruleengine.RuleInit;
 import com.visio.ruleengine.models.PersonProductPair;
 import com.visio.ruleengine.models.Product;
 import com.visio.ruleengine.services.RuleService;
@@ -18,7 +19,11 @@ import java.net.URISyntaxException;
 public class ProductRuleController {
     private static final Logger LOG = LoggerFactory.getLogger(ProductRuleController.class);
 
+    private final RuleInit ruleInit;
+
     private final RuleService ruleService;
+
+
 
     /**
      * Returns the productPrice and eligibility
@@ -32,7 +37,7 @@ public class ProductRuleController {
             LOG.warn("Validation failed: {}", bindingResult);
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
-        Product newProduct = ruleService.getProductPricing(personProductPair);
+        Product newProduct = ruleService.applyRules(personProductPair, ruleInit.getRules());
         return ResponseEntity
                     .ok()
                     .body(newProduct);
