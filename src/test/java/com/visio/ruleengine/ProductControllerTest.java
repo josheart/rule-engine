@@ -64,6 +64,23 @@ public class ProductControllerTest {
     }
 
     @Test
+    @DisplayName("POST /product - Bad Request, Invalid InterestRate")
+    void getBadRequestWithInvalidInterest() throws Exception {
+        Person postPerson = new Person(850, State.FL);
+        Product postProduct = new Product("7-1 ARM", 4.0, false);
+        PersonProductPair postPersonProductPair = new PersonProductPair(postPerson, postProduct);
+        Product mockProduct = new Product("7-1 ARM", 5.2, true);
+        doReturn(mockProduct).when(service).applyRules(any(), any());
+
+        mockMvc.perform(post("/productPrice")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(postPersonProductPair)))
+
+                //Validate the response code
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     @DisplayName("POST /product - Bad Request, Invalid Credit Score - UpperBound")
     void getBadRequestWithInvalidCreditScoreUpper() throws Exception {
         Person postPerson = new Person(851, State.FL);
