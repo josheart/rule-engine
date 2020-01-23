@@ -31,7 +31,7 @@ public class ProductRuleController {
      * @param bindingResult     catches errors happen during binding
      * @return the productPrice and eligibility
      */
-    @PostMapping("/productPrice")
+    @PostMapping("/product-price")
     ResponseEntity<Product> submit(@Valid @RequestBody final PersonProductPair personProductPair, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             LOG.warn("Validation failed: {}", bindingResult);

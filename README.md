@@ -18,7 +18,7 @@ Rule Engine dynamically generates product pricing from a set of rules defined by
 * `mvn clean install` to install the dependencies, test and build the project.
 * Start the application running the main method from `RuleEngineApplication.java`
 * Open a REST client like `Postman`
-* `POST` the below sample payload to the `http://localhost:8080/productPrice`
+* `POST` the below sample payload to the `http://localhost:8080/product-price`
 ```
 {
     "person": {

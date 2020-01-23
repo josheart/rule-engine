@@ -40,7 +40,7 @@ public class ProductControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("POST /productPrice - Success")
+    @DisplayName("POST /product-price - Success")
     void shouldGetProductPrice() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("7-1 ARM", 5.0, false, 60);
@@ -48,7 +48,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -64,7 +64,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Invalid InterestRate")
+    @DisplayName("POST /product-price - Bad Request, Invalid InterestRate")
     void getBadRequestWithInvalidInterest() throws Exception {
         Person postPerson = new Person(850, State.FL);
         Product postProduct = new Product("7-1 ARM", 4.0, false,60);
@@ -72,7 +72,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -81,7 +81,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Invalid Credit Score - UpperBound")
+    @DisplayName("POST /product-price - Bad Request, Invalid Credit Score - UpperBound")
     void getBadRequestWithInvalidCreditScoreUpper() throws Exception {
         Person postPerson = new Person(851, State.FL);
         Product postProduct = new Product("7-1 ARM", 5.0, false, 60);
@@ -89,7 +89,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -98,7 +98,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Invalid Credit Score - LowerBound")
+    @DisplayName("POST /product-price - Bad Request, Invalid Credit Score - LowerBound")
     void getBadRequestWithInvalidCreditScoreLower() throws Exception {
         Person postPerson = new Person(299, State.FL);
         Product postProduct = new Product("7-1 ARM", 5.0, false, 60);
@@ -106,7 +106,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -115,7 +115,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Without ProductName")
+    @DisplayName("POST /product-price - Bad Request, Without ProductName")
     void getBadRequestWithoutProductName() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("", 5.0, false, 60);
@@ -123,7 +123,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -132,7 +132,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Invalid ProductName - LowerBound Length")
+    @DisplayName("POST /product-price - Bad Request, Invalid ProductName - LowerBound Length")
     void getBadRequestWithInvalidProductNameLowerB() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("ARM", 5.0, false, 60);
@@ -140,7 +140,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -149,7 +149,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Invalid ProductName - UpperBound Length")
+    @DisplayName("POST /product-price - Bad Request, Invalid ProductName - UpperBound Length")
     void getBadRequestWithInvalidProductNameUpperB() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("product name is too long", 5.0, false, 60);
@@ -157,7 +157,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -167,14 +167,14 @@ public class ProductControllerTest {
 
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Without PersonObject")
+    @DisplayName("POST /product-price - Bad Request, Without PersonObject")
     void getBadRequestWithoutPersonObject() throws Exception {
         Product postProduct = new Product("", 5.0, false, 60);
         PersonProductPair postPersonProductPair = new PersonProductPair(null, postProduct);
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -183,14 +183,14 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, Without ProductObject")
+    @DisplayName("POST /product-price - Bad Request, Without ProductObject")
     void getBadRequestWithoutProductObject() throws Exception {
         Person postPerson = new Person(720, State.FL);
         PersonProductPair postPersonProductPair = new PersonProductPair(postPerson, null);
         Product mockProduct = new Product("7-1 ARM", 5.0, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -199,7 +199,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, With Invalid Term - Lower Bound")
+    @DisplayName("POST /product-price - Bad Request, With Invalid Term - Lower Bound")
     void getBadRequestWithInvalidTermLow() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("7-1 ARM", 5.0, false, 10);
@@ -207,7 +207,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.0, true, 10);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 
@@ -216,7 +216,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - Bad Request, With Invalid Term - Upper Bound")
+    @DisplayName("POST /product-price - Bad Request, With Invalid Term - Upper Bound")
     void getBadRequestWithInvalidTermUp() throws Exception {
         Person postPerson = new Person(720, State.FL);
         Product postProduct = new Product("7-1 ARM", 5.0, false, 121);
@@ -224,7 +224,7 @@ public class ProductControllerTest {
         Product mockProduct = new Product("7-1 ARM", 5.0, true, 121);
         doReturn(mockProduct).when(service).applyRules(any(), any());
 
-        mockMvc.perform(post("/productPrice")
+        mockMvc.perform(post("/product-price")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(postPersonProductPair)))
 

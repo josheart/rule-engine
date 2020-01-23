@@ -31,12 +31,12 @@ public class ProductControllerIntegrationTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, ProductName : 7-1 ARM, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : 7-1 ARM, Term : 60")
     void shouldGetProductPricing1() {
         Person person = new Person(720, State.FL);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertTrue(newProduct.isDisqualified()),
@@ -45,12 +45,12 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, ProductName : 7-1 NAVY, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : 7-1 NAVY, Term : 60")
     void shouldGetProductPricing2() {
         Person person = new Person(720, State.FL);
         Product product = new Product("7-1 NAVY", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertTrue(newProduct.isDisqualified()),
@@ -59,12 +59,12 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 719, State : FL, ProductName : 7-1 ARM, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 719, State : FL, ProductName : 7-1 ARM, Term : 60")
     void shouldGetProductPricing3() {
         Person person = new Person(719, State.FL);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertTrue(newProduct.isDisqualified()),
@@ -73,12 +73,12 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 719, State : TX, ProductName : 7-1 ARM, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 7-1 ARM, Term : 60")
     void shouldGetProductPricing4() {
         Person person = new Person(719, State.TX);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertFalse(newProduct.isDisqualified()),
@@ -87,12 +87,12 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 60")
     void shouldGetProductPricing5() {
         Person person = new Person(719, State.TX);
         Product product = new Product("7-1 AIR", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertFalse(newProduct.isDisqualified()),
@@ -101,12 +101,12 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 48")
+    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 48")
     void shouldGetProductPricing6() {
         Person person = new Person(719, State.TX);
         Product product = new Product("7-1 AIR", 5.0, false, 48);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/productPrice",
+        Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         assertAll(
                 () -> assertFalse(newProduct.isDisqualified()),
@@ -115,120 +115,120 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 299, State : FL, ProductName : 7-1 ARM, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 299, State : FL, ProductName : 7-1 ARM, Term : 60")
     void shouldReturnBadRequest1() {
         Person person = new Person(299, State.FL);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 851, State : FL, ProductName : 7-1 ARM, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 851, State : FL, ProductName : 7-1 ARM, Term : 60")
     void shouldReturnBadRequest2() {
         Person person = new Person(851, State.FL);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, ProductName : NULL, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : NULL, Term : 60")
     void shouldReturnBadRequest3() {
         Person person = new Person(720, State.FL);
         Product product = new Product(null, 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : NULL, ProductName : 7-1 ARM, Term : 6O")
+    @DisplayName("POST /product-price - CreditScore : 720, State : NULL, ProductName : 7-1 ARM, Term : 6O")
     void shouldReturnBadRequest4() {
         Person person = new Person(720, null);
         Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, ProductName : LOWER BOUND - 3, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : LOWER BOUND - 3, Term : 60")
     void shouldReturnBadRequest5() {
         Person person = new Person(720, State.FL);
         Product product = new Product("ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, ProductName : UPPER BOUND - 20, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : UPPER BOUND - 20, Term : 60")
     void shouldReturnBadRequest6() {
         Person person = new Person(720, State.FL);
         Product product = new Product("it is not a valid state", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - Person : NULL, State : FL, ProductName : 7-1 ARM ,Term: 60")
+    @DisplayName("POST /product-price - Person : NULL, State : FL, ProductName : 7-1 ARM ,Term: 60")
     void shouldReturnBadRequest7() {
         Product product = new Product("FL", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(null, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, Product : NULL")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, Product : NULL")
     void shouldReturnBadRequest8() {
         Person person = new Person(720, State.FL);
         PersonProductPair personProductPair = new PersonProductPair(person, null);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 60")
     void shouldReturnBadRequest9() {
         Person person = new Person(720, State.FL);
         Product product = new Product("FL", 5.5, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 10 - Lower Bound")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 10 - Lower Bound")
     void shouldReturnBadRequest10() {
         Person person = new Person(720, State.FL);
         Product product = new Product("FL", 5.5, false, 10);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
 
     @Test
-    @DisplayName("POST /productPrice - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 121 - Upper Bound")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 121 - Upper Bound")
     void shouldReturnBadRequest11() {
         Person person = new Person(720, State.FL);
         Product product = new Product("FL", 5.5, false, 121);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
     }
