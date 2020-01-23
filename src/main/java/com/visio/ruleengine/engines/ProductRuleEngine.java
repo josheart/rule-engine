@@ -15,8 +15,8 @@ public class ProductRuleEngine implements RuleEngine {
     /**
      * @param person
      * @param product
-     * @param rules
-     * @return
+     * @param rules business rules to decide product eligibility and interest rate
+     * @return the productPrice and eligibility
      */
     @Override
     public Product applyRules(Person person, Product product, List<Rule> rules) {

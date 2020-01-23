@@ -29,7 +29,7 @@ public class RuleInit {
     private String rulePath;
 
     /**
-     *
+     * Loads rules one time to memory during server init
      */
     @PostConstruct
     private void loadRules() {

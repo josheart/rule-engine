@@ -23,7 +23,7 @@ public class ProductRuleService implements RuleService {
      *
      * @param personProductPair
      * @param rules
-     * @return
+     * @return eligibility and interest rate
      */
     @Override
     public Product applyRules(PersonProductPair personProductPair, List<Rule> rules){

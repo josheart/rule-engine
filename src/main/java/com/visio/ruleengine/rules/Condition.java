@@ -37,10 +37,10 @@ public class Condition {
     }
 
     /**
-     * @param key
+     * @param key the value defined in the rules
      * @param person
      * @param product
-     * @return
+     * @return the provided data to be evaluated
      */
     private Object getActual(String key, Person person, Product product) {
         try {
