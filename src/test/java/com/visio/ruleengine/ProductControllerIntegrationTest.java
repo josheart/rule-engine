@@ -169,7 +169,7 @@ public class ProductControllerIntegrationTest {
     @Test
     @DisplayName("No Person, Product : 7-1 ARM")
     void shouldReturnBadRequest7() {
-        Product product = new Product("it is not a valid state", 5.0, false);
+        Product product = new Product("FL", 5.0, false);
         PersonProductPair personProductPair = new PersonProductPair(null, product);
         ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
                 personProductPair, Product.class);
@@ -181,6 +181,17 @@ public class ProductControllerIntegrationTest {
     void shouldReturnBadRequest8() {
         Person person = new Person(720, State.FL);
         PersonProductPair personProductPair = new PersonProductPair(person, null);
+        ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
+                personProductPair, Product.class);
+        Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
+    }
+
+    @Test
+    @DisplayName("CreditScore : 720, State : FL, interestRate : 5.5")
+    void shouldReturnBadRequest9() {
+        Person person = new Person(720, State.FL);
+        Product product = new Product("FL", 5.5, false);
+        PersonProductPair personProductPair = new PersonProductPair(person, product);
         ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/productPrice",
                 personProductPair, Product.class);
         Assertions.assertTrue(responseEntity.getStatusCode().is4xxClientError());
