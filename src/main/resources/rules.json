@@ -44,5 +44,30 @@
       "type": "RAISE",
       "value": 0.5
     }
+  },
+  {
+    "condition": {
+      "key": "term",
+      "type": "EQUALS_OR_GREATER_THAN",
+      "value": 60
+    },
+    "action": {
+      "key": "interest_rate",
+      "type": "RAISE",
+      "value": 0.5
+    }
+  },
+  {
+    "condition": {
+      "key": "term",
+      "type": "LESS_THAN",
+      "value": 60
+    },
+    "action": {
+      "key": "interest_rate",
+      "type": "LOWER",
+      "value": 0.2
+    }
   }
+
 ]

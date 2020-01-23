@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URISyntaxException;
 
 @RestController
 @AllArgsConstructor
@@ -28,7 +27,7 @@ public class ProductRuleController {
     /**
      * Returns the productPrice and eligibility
      *
-     * @param personProductPair The demographic data of the person, initial interest rate and requested product
+     * @param personProductPair The demographic data of the person, initial interest rate, term and requested product
      * @param bindingResult     catches errors happen during binding
      * @return the productPrice and eligibility
      */

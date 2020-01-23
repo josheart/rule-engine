@@ -80,17 +80,55 @@ public class RuleEngineTest {
         fourthProductRule.setCondition(forthCondition);
         fourthProductRule.setAction(forthAction);
 
+        ProductRule fifthProductRule = new ProductRule();
+        Condition fifthCondition = new Condition();
+        fifthCondition.setKey("term");
+        fifthCondition.setType(ConditionType.EQUALS_OR_GREATER_THAN);
+        fifthCondition.setValue("60");
+        Action fifthAction = new Action();
+        fifthAction.setKey("interest_rate");
+        fifthAction.setType(ActionType.RAISE);
+        fifthAction.setValue("0.5");
+        fifthProductRule.setCondition(fifthCondition);
+        fifthProductRule.setAction(fifthAction);
+
+        ProductRule sixthProductRule = new ProductRule();
+        Condition sixthCondition = new Condition();
+        sixthCondition.setKey("term");
+        sixthCondition.setType(ConditionType.LESS_THAN);
+        sixthCondition.setValue("60");
+        Action sixthAction = new Action();
+        sixthAction.setKey("interest_rate");
+        sixthAction.setType(ActionType.LOWER);
+        sixthAction.setValue("0.2");
+        sixthProductRule.setCondition(sixthCondition);
+        sixthProductRule.setAction(sixthAction);
+
         rules.add(firstProductRule);
         rules.add(secondProductRule);
         rules.add(thirdProductRule);
         rules.add(fourthProductRule);
+        rules.add(fifthProductRule);
+        rules.add(sixthProductRule);
     }
 
     @Test
-    @DisplayName("CreditScore : 720, State : FL, Product : 7-1 ARM")
+    @DisplayName("CreditScore : 720, State : FL, Product : 7-1 ARM, term : 60")
     void shouldApplyRule1() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("7-1 ARM", 5.0, false);
+        Product product = new Product("7-1 ARM", 5.0, false, 60);
+        Product postProduct = ruleEngine.applyRules(person, product, rules);
+        assertAll(
+                () -> assertTrue(postProduct.isDisqualified()),
+                () -> assertEquals(5.7, postProduct.getInterest_rate())
+        );
+    }
+
+    @Test
+    @DisplayName("CreditScore : 720, State : FL, Product : 7-1 NAVY, term : 60")
+    void shouldApplyRule2() {
+        Person person = new Person(720, State.FL);
+        Product product = new Product("7-1 NAVY", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertTrue(postProduct.isDisqualified()),
@@ -99,34 +137,34 @@ public class RuleEngineTest {
     }
 
     @Test
-    @DisplayName("CreditScore : 720, State : FL, Product : 7-1 NAVY")
-    void shouldApplyRule2() {
-        Person person = new Person(720, State.FL);
-        Product product = new Product("7-1 NAVY", 5.0, false);
-        Product postProduct = ruleEngine.applyRules(person, product, rules);
-        assertAll(
-                () -> assertTrue(postProduct.isDisqualified()),
-                () -> assertEquals(4.7, postProduct.getInterest_rate())
-        );
-    }
-
-    @Test
-    @DisplayName("CreditScore : 719, State : FL, Product : 7-1 ARM")
+    @DisplayName("CreditScore : 719, State : FL, Product : 7-1 ARM, term : 60")
     void shouldApplyRule3() {
         Person person = new Person(719, State.FL);
-        Product product = new Product("7-1 ARM", 5.0, false);
+        Product product = new Product("7-1 ARM", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertTrue(postProduct.isDisqualified()),
-                () -> assertEquals(6.0, postProduct.getInterest_rate())
+                () -> assertEquals(6.5, postProduct.getInterest_rate())
         );
     }
 
     @Test
-    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 ARM")
+    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 ARM, term : 60")
     void shouldApplyRule4() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 ARM", 5.0, false);
+        Product product = new Product("7-1 ARM", 5.0, false, 60);
+        Product postProduct = ruleEngine.applyRules(person, product, rules);
+        assertAll(
+                () -> assertFalse(postProduct.isDisqualified()),
+                () -> assertEquals(6.5, postProduct.getInterest_rate())
+        );
+    }
+
+    @Test
+    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 AIR, term : 60")
+    void shouldApplyRule5() {
+        Person person = new Person(719, State.TX);
+        Product product = new Product("7-1 AIR", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertFalse(postProduct.isDisqualified()),
@@ -135,14 +173,14 @@ public class RuleEngineTest {
     }
 
     @Test
-    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 AIR")
-    void shouldApplyRule5() {
+    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 AIR, term : 48")
+    void shouldApplyRule6() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 AIR", 5.0, false);
+        Product product = new Product("7-1 AIR", 5.0, false, 48);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertFalse(postProduct.isDisqualified()),
-                () -> assertEquals(5.5, postProduct.getInterest_rate())
+                () -> assertEquals(5.3, postProduct.getInterest_rate())
         );
     }
 
@@ -151,11 +189,11 @@ public class RuleEngineTest {
     @DisplayName("Only FL is not eligible")
     void shouldProductBeGranted(State state) {
         Person person = new Person(720, state);
-        Product product = new Product("7-1 ARM", 5.0, false);
+        Product product = new Product("7-1 ARM", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertFalse(postProduct.isDisqualified()),
-                () -> assertEquals(5.2, postProduct.getInterest_rate())
+                () -> assertEquals(5.7, postProduct.getInterest_rate())
         );
     }
 }

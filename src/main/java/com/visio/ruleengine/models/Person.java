@@ -20,4 +20,5 @@ public class Person {
     private int credit_score;
     @NotNull
     private State state;
+
 }

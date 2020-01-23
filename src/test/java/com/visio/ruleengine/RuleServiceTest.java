@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(SpringExtension.class)
@@ -38,9 +39,9 @@ public class RuleServiceTest {
     @DisplayName("Test applyRules - Success")
     void shouldApplyRules() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("7-1 ARM", 5.0, false);
+        Product product = new Product("7-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
-        Product mockProduct = new Product("7-1 ARM", 5.2, true);
+        Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(ruleEngine).applyRules(person, product, null);
 
         Product returnedProduct = ruleService.applyRules(personProductPair, null);
