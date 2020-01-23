@@ -29,7 +29,7 @@ public class ProductRuleController {
      * Returns the productPrice and eligibility
      *
      * @param personProductPair The demographic data of the person, initial interest rate and requested product
-     * @param bindingResult     catches any error happens during binding
+     * @param bindingResult     catches errors happen during binding
      * @return the productPrice and eligibility
      */
     @PostMapping("/productPrice")

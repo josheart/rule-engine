@@ -29,7 +29,7 @@ public class RuleInit {
     private String rulePath;
 
     /**
-     * 
+     *
      */
     @PostConstruct
     private void loadRules() {
