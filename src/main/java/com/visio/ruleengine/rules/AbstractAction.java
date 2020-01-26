@@ -4,8 +4,7 @@ import com.visio.ruleengine.models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public abstract class AbstractAction{
 
     abstract Product execute(Product product, String value);
