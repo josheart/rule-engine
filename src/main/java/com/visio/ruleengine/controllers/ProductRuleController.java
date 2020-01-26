@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @AllArgsConstructor
-public class ProductRuleController {
+class ProductRuleController {
     private static final Logger LOG = LoggerFactory.getLogger(ProductRuleController.class);
 
     private final RuleInit ruleInit;

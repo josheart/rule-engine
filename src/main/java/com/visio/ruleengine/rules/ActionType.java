@@ -5,6 +5,5 @@ public enum ActionType {
     RAISE,
     MULTIPLY_BY,
     DIVIDE_BY,
-    REJECT,
-    GRANT
+    REJECT
 }

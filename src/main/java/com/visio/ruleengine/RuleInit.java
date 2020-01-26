@@ -1,11 +1,12 @@
 package com.visio.ruleengine;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.visio.ruleengine.rules.ProductRule;
 import com.visio.ruleengine.rules.Rule;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +26,9 @@ public class RuleInit {
 
     private List<Rule> rules;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Value("${rule.path}")
     private String rulePath;
 
@@ -37,11 +41,11 @@ public class RuleInit {
             Path path = Paths.get(rulePath);
             String content = Files.lines(path).collect(Collectors.joining("\n"));
             LOG.info(content);
-            ProductRule[] rules = new Gson().fromJson(content, ProductRule[].class);
+            Rule[] rules = objectMapper.readValue(content, ProductRule[].class);
             this.rules = Arrays.asList(rules);
             LOG.info("Product pricing rules are loaded");
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Error loading product prices", e);
         }
     }
 }

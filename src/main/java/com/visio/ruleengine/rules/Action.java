@@ -14,12 +14,10 @@ public class Action {
     private String value;
     private ActionType type;
 
-    public Product execute(Product product) {
+    Product execute(Product product) {
         switch (type) {
             case LOWER:
                 product.setInterest_rate(product.getInterest_rate() - Double.parseDouble(value));
-                return product;
-            case GRANT:
                 return product;
             case RAISE:
                 product.setInterest_rate(product.getInterest_rate() + Double.parseDouble(value));
@@ -33,7 +31,8 @@ public class Action {
             case MULTIPLY_BY:
                 product.setInterest_rate(product.getInterest_rate() * Double.parseDouble(value));
                 return product;
+            default:
+                return product;
         }
-        return product;
     }
 }
