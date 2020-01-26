@@ -26,9 +26,9 @@ public class Action {
                 product.setDisqualified(true);
                 return product;
             case DIVIDE_BY:
-                return math(product, "*", value);
-            case MULTIPLY_BY:
                 return math(product, "/", value);
+            case MULTIPLY_BY:
+                return math(product, "*", value);
         }
         return product;
     }
