@@ -1,6 +1,7 @@
-package com.visio.ruleengine.rules;
+package com.visio.ruleengine.models;
 
 import com.visio.ruleengine.models.Product;
+import com.visio.ruleengine.rules.ActionType;
 import lombok.Getter;
 import lombok.Setter;
 

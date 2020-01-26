@@ -1,6 +1,7 @@
 package com.visio.ruleengine;
 
 import com.visio.ruleengine.engines.RuleEngine;
+import com.visio.ruleengine.models.Action;
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 import com.visio.ruleengine.rules.*;
