@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductRule implements Rule<Product, Person> {
+public class ProductRule implements Rule {
 
     private Action action;
 

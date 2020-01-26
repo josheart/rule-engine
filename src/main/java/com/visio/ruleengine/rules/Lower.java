@@ -2,7 +2,7 @@ package com.visio.ruleengine.rules;
 
 import com.visio.ruleengine.models.Product;
 
-public class Lower extends IAction {
+public class Lower implements IAction {
 
     @Override
     public Product execute(Product product, String value) {

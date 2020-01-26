@@ -88,7 +88,7 @@ public class RuleEngineTest {
         fifthCondition.setValue("60");
         Action fifthAction = new Action();
         fifthAction.setKey("interest_rate");
-        fifthAction.setType(ActionType.LOWER);
+        fifthAction.setType(ActionType.RAISE);
         fifthAction.setValue("0.5");
         fifthProductRule.setCondition(fifthCondition);
         fifthProductRule.setAction(fifthAction);
