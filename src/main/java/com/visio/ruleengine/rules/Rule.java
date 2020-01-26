@@ -4,11 +4,12 @@ import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 
 @FunctionalInterface
-public interface Rule {
+public interface Rule<T,R> {
     /**
-     * @param person
-     * @param product
+     *
+     * @param r
+     * @param t
      * @return
      */
-    Product applyTo(Person person, Product product);
+    T applyTo(R r, T t);
 }

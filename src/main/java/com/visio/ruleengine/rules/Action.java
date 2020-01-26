@@ -17,35 +17,21 @@ public class Action {
     public Product execute(Product product) {
         switch (type) {
             case LOWER:
-                return math(product, "-", value);
+                product.setInterest_rate(product.getInterest_rate() - Double.parseDouble(value));
+                return product;
             case GRANT:
                 return product;
             case RAISE:
-                return math(product, "+", value);
+                product.setInterest_rate(product.getInterest_rate() + Double.parseDouble(value));
+                return product;
             case REJECT:
                 product.setDisqualified(true);
                 return product;
             case DIVIDE_BY:
-                return math(product, "/", value);
-            case MULTIPLY_BY:
-                return math(product, "*", value);
-        }
-        return product;
-    }
-
-    private Product math(Product product, String operand, String value) {
-        switch (operand) {
-            case "+":
-                product.setInterest_rate(product.getInterest_rate() + Double.parseDouble(value));
-                return product;
-            case "-":
-                product.setInterest_rate(product.getInterest_rate() - Double.parseDouble(value));
-                return product;
-            case "*":
-                product.setInterest_rate(product.getInterest_rate() * Double.parseDouble(value));
-                return product;
-            case "/":
                 product.setInterest_rate(product.getInterest_rate() / Double.parseDouble(value));
+                return product;
+            case MULTIPLY_BY:
+                product.setInterest_rate(product.getInterest_rate() * Double.parseDouble(value));
                 return product;
         }
         return product;

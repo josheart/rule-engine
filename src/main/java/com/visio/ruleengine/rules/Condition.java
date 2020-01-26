@@ -23,14 +23,19 @@ public class Condition {
         Object actualValue = getActual(key, person, product);
         switch (type) {
             case EQUALS:
+                assert actualValue != null;
                 return actualValue.toString().equals(value);
             case LESS_THAN:
+                assert actualValue != null;
                 return lessThan(actualValue, value);
             case GREATER_THAN:
+                assert actualValue != null;
                 return greaterThan(actualValue, value);
             case EQUALS_OR_LESS_THAN:
+                assert actualValue != null;
                 return equals(actualValue, value) || lessThan(actualValue, value);
             case EQUALS_OR_GREATER_THAN:
+                assert actualValue != null;
                 return equals(actualValue, value) || greaterThan(actualValue, value);
         }
         return false;

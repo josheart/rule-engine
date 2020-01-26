@@ -22,7 +22,7 @@ public class ProductRuleEngine implements RuleEngine {
     public Product applyRules(Person person, Product product, List<Rule> rules) {
 
         Product result = product;
-        for (Rule rule : rules) {
+        for (Rule<Product, Person> rule : rules) {
             result = rule.applyTo(person, result);
         }
         return result;
