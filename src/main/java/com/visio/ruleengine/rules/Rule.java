@@ -4,6 +4,6 @@ import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 
 @FunctionalInterface
-public interface Rule {
-    Product applyTo(Person person, Product product);
+public interface Rule<T, R> {
+    T applyTo(R r, T t);
 }
