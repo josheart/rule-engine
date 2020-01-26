@@ -1,12 +1,14 @@
 package com.visio.ruleengine.rules;
 
-import java.util.function.UnaryOperator;
+import com.visio.ruleengine.models.Action;
 
-import static com.visio.ruleengine.rules.ActionType.LOWER;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class ActionFactory {
+class ActionFactory {
 
-    public static AbstractAction createAction(ActionType actionType) {
+   static IAction createAction(ActionType actionType) {
         switch (actionType) {
             case LOWER:
                 return new Lower();

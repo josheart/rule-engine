@@ -6,7 +6,6 @@ import com.visio.ruleengine.models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 public class ProductRule implements Rule<Product, Person> {
@@ -23,8 +22,8 @@ public class ProductRule implements Rule<Product, Person> {
     @Override
     public Product applyTo(Person person, Product product) {
         if (condition.getResult(person, product)) {
-            AbstractAction abstractAction = ActionFactory.createAction(action.getType());
-            return abstractAction.execute(product, action.getValue());
+            IAction iAction = ActionFactory.createAction(action.getType());
+            return iAction.execute(product, action.getValue());
         }
         return product;
     }
