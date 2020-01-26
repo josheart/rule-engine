@@ -5,11 +5,13 @@ import com.visio.ruleengine.models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 public class ProductRule implements Rule<Product, Person> {
 
     private Action action;
+
     private Condition condition;
 
     /**
@@ -20,7 +22,8 @@ public class ProductRule implements Rule<Product, Person> {
     @Override
     public Product applyTo(Person person, Product product) {
         if (condition.getResult(person, product)) {
-            return action.execute(product);
+            AbstractAction abstractAction = ActionFactory.createAction(action.getType());
+            return abstractAction.execute(product, action.getValue());
         }
         return product;
     }
