@@ -11,7 +11,6 @@ import lombok.Setter;
 public class ProductRule implements Rule<Product, Person> {
 
     private Action action;
-
     private Condition condition;
 
     /**

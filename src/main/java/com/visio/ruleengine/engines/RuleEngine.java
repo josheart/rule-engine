@@ -7,6 +7,5 @@ import com.visio.ruleengine.models.Product;
 import java.util.List;
 
 public interface RuleEngine {
-
-    Product applyRules(Person person, Product product, List<Rule> rules);
+    Product applyRules(Person person, Product product, List<Rule<Product, Person>> rules);
 }

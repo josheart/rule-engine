@@ -19,7 +19,7 @@ public class ProductRuleEngine implements RuleEngine {
      * @return the productPrice and eligibility
      */
     @Override
-    public Product applyRules(Person person, Product product, List<Rule> rules) {
+    public Product applyRules(Person person, Product product, List<Rule<Product, Person>> rules) {
 
         Product result = product;
         for (Rule<Product, Person> rule : rules) {

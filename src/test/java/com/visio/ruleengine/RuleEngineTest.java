@@ -29,7 +29,7 @@ public class RuleEngineTest {
     @Autowired
     RuleEngine ruleEngine;
 
-    List<Rule> rules;
+    List<Rule<Product, Person>> rules;
 
     @BeforeAll
     void setup() {

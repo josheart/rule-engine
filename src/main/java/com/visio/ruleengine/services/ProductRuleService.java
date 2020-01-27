@@ -26,7 +26,7 @@ public class ProductRuleService implements RuleService {
      * @return eligibility and interest rate
      */
     @Override
-    public Product applyRules(PersonProductPair personProductPair, List<Rule> rules){
+    public Product applyRules(PersonProductPair personProductPair, List<Rule<Product,Person>> rules){
         Person person = personProductPair.getPerson();
         Product product = personProductPair.getProduct();
         return ruleEngine.applyRules(person, product, rules);
