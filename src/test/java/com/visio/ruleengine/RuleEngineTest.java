@@ -52,7 +52,7 @@ public class RuleEngineTest {
         secondCondition.setValue("720");
         Action secondAction = new Action();
         secondAction.setKey("interest_rate");
-        secondAction.setType(ActionType.RAISE);
+        secondAction.setType(ActionType.INCREASE);
         secondAction.setValue("0.5");
         secondProductRule.setCondition(secondCondition);
         secondProductRule.setAction(secondAction);
@@ -64,7 +64,7 @@ public class RuleEngineTest {
         thirdCondition.setValue("720");
         Action thirdAction = new Action();
         thirdAction.setKey("interest_rate");
-        thirdAction.setType(ActionType.LOWER);
+        thirdAction.setType(ActionType.DECREASE);
         thirdAction.setValue("0.3");
         thirdProductRule.setCondition(thirdCondition);
         thirdProductRule.setAction(thirdAction);
@@ -76,7 +76,7 @@ public class RuleEngineTest {
         forthCondition.setValue("7-1 ARM");
         Action forthAction = new Action();
         forthAction.setKey("interest_rate");
-        forthAction.setType(ActionType.RAISE);
+        forthAction.setType(ActionType.INCREASE);
         forthAction.setValue("0.5");
         fourthProductRule.setCondition(forthCondition);
         fourthProductRule.setAction(forthAction);
@@ -88,7 +88,7 @@ public class RuleEngineTest {
         fifthCondition.setValue("60");
         Action fifthAction = new Action();
         fifthAction.setKey("interest_rate");
-        fifthAction.setType(ActionType.RAISE);
+        fifthAction.setType(ActionType.INCREASE);
         fifthAction.setValue("0.5");
         fifthProductRule.setCondition(fifthCondition);
         fifthProductRule.setAction(fifthAction);
@@ -100,7 +100,7 @@ public class RuleEngineTest {
         sixthCondition.setValue("60");
         Action sixthAction = new Action();
         sixthAction.setKey("interest_rate");
-        sixthAction.setType(ActionType.LOWER);
+        sixthAction.setType(ActionType.DECREASE);
         sixthAction.setValue("0.2");
         sixthProductRule.setCondition(sixthCondition);
         sixthProductRule.setAction(sixthAction);

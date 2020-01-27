@@ -9,9 +9,9 @@ class ActionFactory {
     final static Map<ActionType, Supplier<IAction>> map = new HashMap<>();
 
     static {
-        map.put(ActionType.LOWER, Lower::new);
-        map.put(ActionType.RAISE, Raise::new);
-        map.put(ActionType.REJECT,Reject::new);
+        map.put(ActionType.DECREASE, Decrement::new);
+        map.put(ActionType.INCREASE, Increment::new);
+        map.put(ActionType.REJECT, Rejection::new);
     }
 
    static IAction createAction(ActionType actionType) {
