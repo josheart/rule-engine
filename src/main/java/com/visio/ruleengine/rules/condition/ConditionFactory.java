@@ -10,9 +10,9 @@ public class ConditionFactory {
 
     static {
         map.put(ConditionType.EQUALS, Equality::new);
-        map.put(ConditionType.LESS_THAN, Lessness::new);
+        map.put(ConditionType.LESS_THAN, Littleness::new);
         map.put(ConditionType.GREATER_THAN, Greatness::new);
-        map.put(ConditionType.EQUALS_OR_LESS_THAN, EqualityOrLessness::new);
+        map.put(ConditionType.EQUALS_OR_LESS_THAN, EqualityOrLittleness::new);
         map.put(ConditionType.EQUALS_OR_GREATER_THAN, EqualityOrGreatness::new);
     }
 
