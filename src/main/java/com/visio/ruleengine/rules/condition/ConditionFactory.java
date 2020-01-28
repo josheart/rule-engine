@@ -16,9 +16,13 @@ public class ConditionFactory {
         map.put(ConditionType.EQUALS_OR_GREATER_THAN, EqualityOrGreatness::new);
     }
 
+    /**
+     * @param conditionType
+     * @return
+     */
     public static ICondition createCondition(ConditionType conditionType) {
         Supplier<ICondition> iConditionSupplier = map.get(conditionType);
-        if(iConditionSupplier != null) return iConditionSupplier.get();
+        if (iConditionSupplier != null) return iConditionSupplier.get();
         throw new IllegalArgumentException("No such condition " + conditionType.toString());
     }
 }

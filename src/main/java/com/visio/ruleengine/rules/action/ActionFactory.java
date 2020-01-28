@@ -15,13 +15,12 @@ public class ActionFactory {
     }
 
     /**
-     *
      * @param actionType
      * @return
      */
-   public static IAction createAction(ActionType actionType) {
-      Supplier<IAction> p = map.get(actionType);
-      if (p != null) return p.get();
-      throw new IllegalArgumentException("No such action : " + actionType.toString());
+    public static IAction createAction(ActionType actionType) {
+        Supplier<IAction> p = map.get(actionType);
+        if (p != null) return p.get();
+        throw new IllegalArgumentException("No such action : " + actionType.toString());
     }
 }

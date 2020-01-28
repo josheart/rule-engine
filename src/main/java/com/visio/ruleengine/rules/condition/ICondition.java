@@ -11,12 +11,12 @@ public interface ICondition {
     boolean getResult(String key, String value, Person person, Product product);
 
     /**
-     * @param key the value defined in the rules
+     * @param key     the value defined in the rules
      * @param person
      * @param product
      * @return the provided data to be evaluated
      */
-    default  Object getActual(String key, Person person, Product product) {
+    default Object getActual(String key, Person person, Product product) {
         try {
             Field[] fields = person.getClass().getDeclaredFields();
             for (Field field : fields) {
@@ -37,6 +37,7 @@ public interface ICondition {
         }
         return null;
     }
+
     /**
      * @param actualValue
      * @param value

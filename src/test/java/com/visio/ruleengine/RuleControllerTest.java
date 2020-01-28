@@ -67,7 +67,7 @@ public class RuleControllerTest {
     @DisplayName("POST /product-price - Bad Request, Invalid InterestRate")
     void getBadRequestWithInvalidInterest() throws Exception {
         Person postPerson = new Person(850, State.FL);
-        Product postProduct = new Product("7-1 ARM", 4.0, false,60);
+        Product postProduct = new Product("7-1 ARM", 4.0, false, 60);
         PersonProductPair postPersonProductPair = new PersonProductPair(postPerson, postProduct);
         Product mockProduct = new Product("7-1 ARM", 5.7, true, 60);
         doReturn(mockProduct).when(service).applyRules(any(), any());

@@ -1,10 +1,10 @@
 {
-    "person": {
+  "person": {
     "credit_score": 720,
     "state": "FL"
-    },
-    "product": {
+  },
+  "product": {
     "name": "7-1 ARM",
     "interest_rate": 5.0
-    }
+  }
 }

@@ -5,7 +5,6 @@ import com.visio.ruleengine.models.Product;
 @FunctionalInterface
 public interface IAction {
     /**
-     *
      * @param product
      * @param value
      * @return
