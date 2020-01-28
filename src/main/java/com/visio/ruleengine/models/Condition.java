@@ -1,6 +1,6 @@
 package com.visio.ruleengine.models;
 
-import com.visio.ruleengine.rules.ConditionType;
+import com.visio.ruleengine.rules.condition.ConditionType;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -7,6 +7,8 @@ import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 import com.visio.ruleengine.rules.*;
 import com.visio.ruleengine.rules.action.ActionType;
+import com.visio.ruleengine.rules.condition.ConditionType;
+import com.visio.ruleengine.rules.condition.State;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;

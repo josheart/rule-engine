@@ -1,7 +1,7 @@
 package com.visio.ruleengine.models;
 
 
-import com.visio.ruleengine.rules.State;
+import com.visio.ruleengine.rules.condition.State;
 import com.visio.ruleengine.views.CreditScore;
 import lombok.*;
 

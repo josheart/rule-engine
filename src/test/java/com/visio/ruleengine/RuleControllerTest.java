@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.PersonProductPair;
 import com.visio.ruleengine.models.Product;
-import com.visio.ruleengine.rules.State;
+import com.visio.ruleengine.rules.condition.State;
 import com.visio.ruleengine.services.RuleService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,5 @@
 package com.visio.ruleengine.rules.condition;
 
-import com.visio.ruleengine.rules.ConditionType;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;

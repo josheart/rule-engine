@@ -3,7 +3,7 @@ package com.visio.ruleengine;
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.PersonProductPair;
 import com.visio.ruleengine.models.Product;
-import com.visio.ruleengine.rules.State;
+import com.visio.ruleengine.rules.condition.State;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
