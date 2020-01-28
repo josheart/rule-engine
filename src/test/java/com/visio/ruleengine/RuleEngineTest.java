@@ -2,9 +2,11 @@ package com.visio.ruleengine;
 
 import com.visio.ruleengine.engines.RuleEngine;
 import com.visio.ruleengine.models.Action;
+import com.visio.ruleengine.models.Condition;
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
 import com.visio.ruleengine.rules.*;
+import com.visio.ruleengine.rules.action.ActionType;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -126,10 +128,10 @@ public class RuleEngineTest {
     }
 
     @Test
-    @DisplayName("CreditScore : 720, State : FL, Product : 7-1 NAVY, term : 60")
+    @DisplayName("CreditScore : 720, State : FL, Product : 5-1 ARM, term : 60")
     void shouldApplyRule2() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("7-1 NAVY", 5.0, false, 60);
+        Product product = new Product("5-1 ARM", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertTrue(postProduct.isDisqualified()),
@@ -162,10 +164,10 @@ public class RuleEngineTest {
     }
 
     @Test
-    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 AIR, term : 60")
+    @DisplayName("CreditScore : 719, State : TX, Product : 30-YR FIXED, term : 60")
     void shouldApplyRule5() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 AIR", 5.0, false, 60);
+        Product product = new Product("30-YR FIXED", 5.0, false, 60);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertFalse(postProduct.isDisqualified()),
@@ -174,10 +176,10 @@ public class RuleEngineTest {
     }
 
     @Test
-    @DisplayName("CreditScore : 719, State : TX, Product : 7-1 AIR, term : 48")
+    @DisplayName("CreditScore : 719, State : TX, Product : 5-1 ARM, term : 48")
     void shouldApplyRule6() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 AIR", 5.0, false, 48);
+        Product product = new Product("5-1 ARM", 5.0, false, 48);
         Product postProduct = ruleEngine.applyRules(person, product, rules);
         assertAll(
                 () -> assertFalse(postProduct.isDisqualified()),

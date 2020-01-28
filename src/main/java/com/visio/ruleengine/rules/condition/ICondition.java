@@ -1,40 +1,14 @@
-package com.visio.ruleengine.rules;
+package com.visio.ruleengine.rules.condition;
 
 import com.visio.ruleengine.models.Person;
 import com.visio.ruleengine.models.Product;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.lang.reflect.Field;
 
-@Getter
-@Setter
-public class Condition {
-    private String key;
-    private String value;
-    private ConditionType type;
+@FunctionalInterface
+public interface ICondition {
 
-    /**
-     * @param person
-     * @param product
-     * @return
-     */
-    public boolean getResult(Person person, Product product) {
-        Object actualValue = getActual(key, person, product);
-        switch (type) {
-            case EQUALS:
-                return actualValue.toString().equals(value);
-            case LESS_THAN:
-                return lessThan(actualValue, value);
-            case GREATER_THAN:
-                return greaterThan(actualValue, value);
-            case EQUALS_OR_LESS_THAN:
-                return equals(actualValue, value) || lessThan(actualValue, value);
-            case EQUALS_OR_GREATER_THAN:
-                return equals(actualValue, value) || greaterThan(actualValue, value);
-        }
-        return false;
-    }
+    boolean getResult(String key, String value, Person person, Product product);
 
     /**
      * @param key the value defined in the rules
@@ -42,7 +16,7 @@ public class Condition {
      * @param product
      * @return the provided data to be evaluated
      */
-    private Object getActual(String key, Person person, Product product) {
+    default  Object getActual(String key, Person person, Product product) {
         try {
             Field[] fields = person.getClass().getDeclaredFields();
             for (Field field : fields) {
@@ -63,13 +37,12 @@ public class Condition {
         }
         return null;
     }
-
     /**
      * @param actualValue
      * @param value
      * @return
      */
-    private boolean equals(Object actualValue, String value) {
+    default boolean equals(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) == Double.parseDouble(value);
     }
 
@@ -78,7 +51,7 @@ public class Condition {
      * @param value
      * @return
      */
-    private boolean greaterThan(Object actualValue, String value) {
+    default boolean greaterThan(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) > Double.parseDouble(value);
     }
 
@@ -87,7 +60,7 @@ public class Condition {
      * @param value
      * @return
      */
-    private boolean lessThan(Object actualValue, String value) {
+    default boolean lessThan(Object actualValue, String value) {
         return Double.parseDouble(actualValue.toString()) < Double.parseDouble(value);
     }
 }

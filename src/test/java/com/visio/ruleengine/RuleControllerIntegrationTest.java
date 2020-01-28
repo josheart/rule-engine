@@ -45,10 +45,10 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : 7-1 NAVY, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : 5-1 ARM, Term : 60")
     void shouldGetProductPricing2() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("7-1 NAVY", 5.0, false, 60);
+        Product product = new Product("5-1 ARM", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
@@ -87,10 +87,10 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 30-YR FIXED, Term : 60")
     void shouldGetProductPricing5() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 AIR", 5.0, false, 60);
+        Product product = new Product("30-YR FIXED", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
@@ -101,10 +101,10 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 7-1 AIR, Term : 48")
+    @DisplayName("POST /product-price - CreditScore : 719, State : TX, ProductName : 30-YR FIXED, Term : 48")
     void shouldGetProductPricing6() {
         Person person = new Person(719, State.TX);
-        Product product = new Product("7-1 AIR", 5.0, false, 48);
+        Product product = new Product("30-YR FIXED", 5.0, false, 48);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         Product newProduct = testRestTemplate.postForObject("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
@@ -159,7 +159,7 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : LOWER BOUND - 3, Term : 60")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : ARM LOWER BOUND - 3, Term : 60")
     void shouldReturnBadRequest5() {
         Person person = new Person(720, State.FL);
         Product product = new Product("ARM", 5.0, false, 60);
@@ -173,7 +173,7 @@ public class RuleControllerIntegrationTest {
     @DisplayName("POST /product-price - CreditScore : 720, State : FL, ProductName : UPPER BOUND - 20, Term : 60")
     void shouldReturnBadRequest6() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("it is not a valid state", 5.0, false, 60);
+        Product product = new Product("it is not a valid product", 5.0, false, 60);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
@@ -212,10 +212,10 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 10 - Lower Bound")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.0, Term : 10 - Lower Bound")
     void shouldReturnBadRequest10() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("FL", 5.5, false, 10);
+        Product product = new Product("FL", 5.0, false, 10);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);
@@ -223,10 +223,10 @@ public class RuleControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.5, Term : 121 - Upper Bound")
+    @DisplayName("POST /product-price - CreditScore : 720, State : FL, InterestRate : 5.0, Term : 121 - Upper Bound")
     void shouldReturnBadRequest11() {
         Person person = new Person(720, State.FL);
-        Product product = new Product("FL", 5.5, false, 121);
+        Product product = new Product("FL", 5.0, false, 121);
         PersonProductPair personProductPair = new PersonProductPair(person, product);
         ResponseEntity<Product> responseEntity = testRestTemplate.postForEntity("http://localhost:" + port + "/product-price",
                 personProductPair, Product.class);

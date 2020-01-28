@@ -1,4 +1,4 @@
-package com.visio.ruleengine.rules;
+package com.visio.ruleengine.rules.action;
 
 public enum ActionType {
     DECREASE,
