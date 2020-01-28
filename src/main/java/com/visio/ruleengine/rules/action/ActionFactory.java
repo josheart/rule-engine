@@ -14,6 +14,11 @@ public class ActionFactory {
         map.put(ActionType.REJECT, Rejection::new);
     }
 
+    /**
+     *
+     * @param actionType
+     * @return
+     */
    public static IAction createAction(ActionType actionType) {
       Supplier<IAction> p = map.get(actionType);
       if (p != null) return p.get();
